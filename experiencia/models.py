@@ -1,7 +1,8 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Experiencia(models.Model):
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
     titulo = models.CharField( max_length=60, null=False)
     tipo_de_emprego = models.CharField( max_length=60)
     nome_da_empresa = models.CharField( max_length=60)
@@ -17,5 +18,5 @@ class Experiencia(models.Model):
     descricao = models.TextField(max_length=2000)
     titulo_do_perfil = models.CharField(max_length=100, null=True)
     def __str__(self):
-        return self.titulo
+        return self.username.username
     
